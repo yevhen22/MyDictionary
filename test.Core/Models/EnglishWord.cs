@@ -16,66 +16,80 @@ using SQLite;
 namespace test.Models
 {
     [Table("EnglishWords")]
-    public class EnglishWord:INotifyPropertyChanged
+    public class EnglishWord
     {
-
-        private int id;
-        private string engword;
-        private DateTime currenttime;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-       
+        [PrimaryKey, AutoIncrement, Column("id")]
+        public int id { get; set; }
+        public string engword { get; set; }
+        public DateTime currenttime { get; set; }
         public ICollection<UAWord> uaword { get; private set; }
 
-        public EnglishWord() {
+        public EnglishWord()
+        {
             uaword = new List<UAWord>();
         }
-        [PrimaryKey,AutoIncrement,Column("id")]
-        public int ID
+        public void AddUkrainianWord(UAWord words)
         {
-            get { return id; }
-            set 
-            {
-                if (id != value)
-                {
-                    id = value;
-                    OnPropertyChanged(nameof(ID));
-                }
-            }
-        }
-
-      
-        public string EngWord {
-            get { return engword; }
-            set
-            {
-                if (engword != value)
-                {
-                    engword = value;
-                    OnPropertyChanged(nameof(EngWord));
-                }
-            }
-        }
-
-       
-       public DateTime DataTime {
-            get { return currenttime; }
-            set
-            {
-                if (currenttime != value)
-                {
-                    currenttime = value;
-                    OnPropertyChanged(nameof(DataTime));
-                }
-            }
-        }
-
-        public void AddUkrainianWord(UAWord words) {
             uaword.Add(words);
         }
 
-        protected void OnPropertyChanged(string prop) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
+        /* private int id;
+         private string engword;
+         private DateTime currenttime;
+
+         public event PropertyChangedEventHandler PropertyChanged;
+
+         public ICollection<UAWord> uaword { get; private set; }
+
+         public EnglishWord() {
+             uaword = new List<UAWord>();
+         }
+         [PrimaryKey,AutoIncrement,Column("id")]
+         public int ID
+         {
+             get { return id; }
+             set 
+             {
+                 if (id != value)
+                 {
+                     id = value;
+                     OnPropertyChanged(nameof(ID));
+                 }
+             }
+         }
+
+
+         public string EngWord {
+             get { return engword; }
+             set
+             {
+                 if (engword != value)
+                 {
+                     engword = value;
+                     OnPropertyChanged(nameof(EngWord));
+                 }
+             }
+         }
+
+
+        public DateTime DataTime {
+             get { return currenttime; }
+             set
+             {
+                 if (currenttime != value)
+                 {
+                     currenttime = value;
+                     OnPropertyChanged(nameof(DataTime));
+                 }
+             }
+         }
+
+         public void AddUkrainianWord(UAWord words) {
+             uaword.Add(words);
+         }
+
+         protected void OnPropertyChanged(string prop) {
+             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+         }*/
     }
 }

@@ -3,13 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:test"
              x:Class="test.MainPage" Title="Dictionary" >
+
+   <!-- <ContentPage.BindingContext>
+        <test.Models:EnglishWord/>
+        <test.Models:UAWord/>
+    </ContentPage.BindingContext>-->
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="MenuItem1" Order="Primary" Text="Add New" Priority="0" Clicked="CreateWord" />
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
-        <Label x:Name="textpro"/>
-    </StackLayout>
     
+
+    <StackLayout x:Name="mainstack">
+        <ListView x:Name="listData"
+              HasUnevenRows="True"
+              ItemsSource="{Binding list}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding engword}" FontSize="18" />
+                                <Label Text="{Binding uaword}" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

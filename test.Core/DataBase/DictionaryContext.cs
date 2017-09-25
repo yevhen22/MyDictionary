@@ -32,29 +32,14 @@ namespace test.DataBase
             modelBuilder.Entity<EnglishWord>().ToTable("Englishwords");
             modelBuilder.Entity<UAWord>().ToTable("UAWords");
 
-            modelBuilder.Entity<EnglishWord>().HasKey(p => p.ID);
-            modelBuilder.Entity<UAWord>().HasKey(p => p.ID);
+            modelBuilder.Entity<EnglishWord>().HasKey(p => p.id);
+            modelBuilder.Entity<UAWord>().HasKey(p => p.id);
             
 
-            modelBuilder.Entity<EnglishWord>().HasMany(p => p.uaword).WithOne(p => p.EnglishWord);
-            modelBuilder.Entity<UAWord>().HasOne(i => i.EnglishWord).WithMany(p=>p.uaword);
+            modelBuilder.Entity<EnglishWord>().HasMany(p => p.uaword).WithOne(p => p.englishword);
+            modelBuilder.Entity<UAWord>().HasOne(i => i.englishword).WithMany(p=>p.uaword);
 
         }
-
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connbuilder = new SqliteConnectionStringBuilder
-            {
-                DataSource = databasepath
-            }.ToString();
-
-            var conn = new SqliteConnection(connbuilder);
-            optionsBuilder.UseSqlite(conn);
-           // optionsBuilder.UseSqlite($"Filename={databasepath}");
-
-            
-         
-        }*/
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

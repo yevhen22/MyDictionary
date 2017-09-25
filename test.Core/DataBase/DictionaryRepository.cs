@@ -31,6 +31,17 @@ namespace test.DataBase
             return res;
         }
 
+        public ICollection<EnglishWord> GetEnglishList()
+        {
+            var res = new List<EnglishWord>();
+            if (db.Englishword != null)
+            {
+                res = db.Englishword.ToList();
+            }
+            return res;
+        }
+
+
         public IEnumerable<UAWord> UAWord()
         {
             var res = db.Uaword.ToList();
@@ -40,38 +51,23 @@ namespace test.DataBase
 
         public IEnumerable<UAWord> GetAll()
         {
-            var res = db.Uaword.Include(p => p.EnglishWord).ToList();
+            var res = db.Uaword.Include(p => p.englishword).ToList();
             return res;
         }
 
-        public void SaveEngItem(ref EnglishWord word) {
-            if (word.ID != 0)
-            {
-                db.Update(word);
-
-            }
-            else
-            {
-                db.Englishword.Add(word);
-            }
+        public void SaveEngItem(ref EnglishWord word)
+        {
+             db.Englishword.Add(word);
         }
 
         public void SaveUaItem(UAWord word)
         {
-            if (word.ID != 0)
-            {
-                db.Update(word);
-
-            }
-            else
-            {
-                db.Uaword.Add(word);
-            }
+            db.Uaword.Add(word);
         }
 
         public void SetUpConnection(EnglishWord word,UAWord uAWord) {
             word.uaword.Add(uAWord);
-            db.Update(word);
+            db.SaveChanges();
         }
     }
 }

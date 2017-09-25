@@ -12,41 +12,40 @@ namespace test.Migrations
                 name: "Englishwords",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    DataTime = table.Column<DateTime>(nullable: false),
-                    EngWord = table.Column<string>(nullable: true)
+                    currenttime = table.Column<DateTime>(nullable: false),
+                    engword = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Englishwords", x => x.ID);
+                    table.PrimaryKey("PK_Englishwords", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "UAWords",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    EnglishID = table.Column<int>(nullable: false),
-                    EnglishWordID = table.Column<int>(nullable: true),
-                    UAword = table.Column<string>(nullable: true)
+                    englishWordId = table.Column<int>(nullable: false),
+                    uaword = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UAWords", x => x.ID);
+                    table.PrimaryKey("PK_UAWords", x => x.id);
                     table.ForeignKey(
-                        name: "FK_UAWords_Englishwords_EnglishWordID",
-                        column: x => x.EnglishWordID,
+                        name: "FK_UAWords_Englishwords_englishWordId",
+                        column: x => x.englishWordId,
                         principalTable: "Englishwords",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UAWords_EnglishWordID",
+                name: "IX_UAWords_englishWordId",
                 table: "UAWords",
-                column: "EnglishWordID");
+                column: "englishWordId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

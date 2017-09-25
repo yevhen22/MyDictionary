@@ -15,32 +15,28 @@ namespace test
         
         public MainPage()
         {
+            ICollection<EnglishWord> list;
             InitializeComponent();
-            EnglishWord english = new EnglishWord
-            {
-                EngWord = "hello",
-                DataTime = DateTime.Now,
-                ID = 1
-            };
+            /* EnglishWord english = new EnglishWord
+             {
+                 engword = "hello",
+                 currenttime = DateTime.Now,
+             };
 
-            UAWord word = new UAWord
-            {
-                UAword = "Привіт",
-                ID = 1
-            };
+             UAWord word = new UAWord
+             {
+                 uaword = "Привіт",
+             };
 
-            english.AddUkrainianWord(word);
+             english.AddUkrainianWord(word);
 
-            App.Database.SaveEngItem(ref english);
-            App.Database.SaveUaItem(word);
-            App.Database.SetUpConnection(english,word);
-
+             App.Database.SaveEngItem(ref english);
+             App.Database.SaveUaItem(word);
+             App.Database.SetUpConnection(english,word);*/
+            list = new List<EnglishWord>();
+            list = App.Database.GetEnglishList();
         }
-        protected override void OnAppearing()
-        {
-            //listData.ItemsSource = App.Database.GetEnglish();
-            base.OnAppearing();
-        }
+        
 
         /*Method that open page for create new word group*/
         public async void CreateWord(object sender, EventArgs args)
