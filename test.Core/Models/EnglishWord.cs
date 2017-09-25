@@ -7,11 +7,9 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
-using Microsoft.Data.Sqlite;
 using SQLite;
+
 
 namespace test.Models
 {
@@ -19,9 +17,9 @@ namespace test.Models
     public class EnglishWord
     {
         [PrimaryKey, AutoIncrement, Column("id")]
-        public int id { get; set; }
-        public string engword { get; set; }
-        public DateTime currenttime { get; set; }
+        public int Id { get;  set; }
+        public string Engword { get; private set; }
+        public DateTime Currenttime { get; private set; }
         public ICollection<UAWord> uaword { get; private set; }
 
         public EnglishWord()
@@ -32,7 +30,16 @@ namespace test.Models
         {
             uaword.Add(words);
         }
-
+       
+      
+        public void SetengWord(string eng){
+            Engword = eng; 
+        }
+       
+        public void SetDateTime(DateTime time) {
+            Currenttime = time;
+        }
+        
         /* private int id;
          private string engword;
          private DateTime currenttime;

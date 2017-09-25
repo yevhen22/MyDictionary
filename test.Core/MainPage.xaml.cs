@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using test.Views;
 using test.Models;
 using test.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace test
 {
@@ -15,26 +16,33 @@ namespace test
         
         public MainPage()
         {
-            ICollection<EnglishWord> list;
             InitializeComponent();
-            /* EnglishWord english = new EnglishWord
-             {
-                 engword = "hello",
-                 currenttime = DateTime.Now,
-             };
+             EnglishWord english = new EnglishWord();
+             english.SetengWord("book");
+             english.SetDateTime(DateTime.Now);
 
-             UAWord word = new UAWord
-             {
-                 uaword = "Привіт",
-             };
+             UAWord word = new UAWord();
+             word.SetUaWord("книга");
 
-             english.AddUkrainianWord(word);
+            UAWord word1 = new UAWord();
+            word1.SetUaWord("бронювати");
 
-             App.Database.SaveEngItem(ref english);
-             App.Database.SaveUaItem(word);
-             App.Database.SetUpConnection(english,word);*/
-            list = new List<EnglishWord>();
-            list = App.Database.GetEnglishList();
+            english.AddUkrainianWord(word);
+            english.AddUkrainianWord(word1);
+            /*EnglishWord english = new EnglishWord
+            {
+                Engword = "hello",
+                Currenttime = DateTime.Now,
+            };
+            UAWord word = new UAWord
+            {
+                Uaword = "Привіт",
+            };
+            english.AddUkrainianWord(word);*/
+
+            App.Database.SaveEngItem(ref english);
+            App.Database.SaveUaItem(word);
+            App.Database.SetUpConnection(english, word);
         }
         
 

@@ -17,39 +17,39 @@ namespace test.Migrations
 
             modelBuilder.Entity("test.Models.EnglishWord", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("currenttime");
+                    b.Property<DateTime>("Currenttime");
 
-                    b.Property<string>("engword");
+                    b.Property<string>("Engword");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Englishwords");
                 });
 
             modelBuilder.Entity("test.Models.UAWord", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("englishWordId");
+                    b.Property<int>("EnglishWordId");
 
-                    b.Property<string>("uaword");
+                    b.Property<string>("Uaword");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("englishWordId");
+                    b.HasIndex("EnglishWordId");
 
                     b.ToTable("UAWords");
                 });
 
             modelBuilder.Entity("test.Models.UAWord", b =>
                 {
-                    b.HasOne("test.Models.EnglishWord", "englishword")
+                    b.HasOne("test.Models.EnglishWord", "Englishword")
                         .WithMany("uaword")
-                        .HasForeignKey("englishWordId")
+                        .HasForeignKey("EnglishWordId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

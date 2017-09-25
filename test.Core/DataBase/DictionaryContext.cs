@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using test.Models;
 using Microsoft.Data.Sqlite;
 using SQLite;
-using test.Models;
 
 
 namespace test.DataBase
@@ -14,8 +13,9 @@ namespace test.DataBase
     {
         string databasepath;
        
-        public DictionaryContext() 
+        public DictionaryContext() :base()
         {
+            Database.Migrate();
         }
 
         public DictionaryContext(string path) : base()
@@ -32,12 +32,12 @@ namespace test.DataBase
             modelBuilder.Entity<EnglishWord>().ToTable("Englishwords");
             modelBuilder.Entity<UAWord>().ToTable("UAWords");
 
-            modelBuilder.Entity<EnglishWord>().HasKey(p => p.id);
-            modelBuilder.Entity<UAWord>().HasKey(p => p.id);
+            modelBuilder.Entity<EnglishWord>().HasKey(p => p.Id);
+            modelBuilder.Entity<UAWord>().HasKey(p => p.Id);
             
 
-            modelBuilder.Entity<EnglishWord>().HasMany(p => p.uaword).WithOne(p => p.englishword);
-            modelBuilder.Entity<UAWord>().HasOne(i => i.englishword).WithMany(p=>p.uaword);
+            modelBuilder.Entity<EnglishWord>().HasMany(p => p.uaword).WithOne(p => p.Englishword);
+            modelBuilder.Entity<UAWord>().HasOne(i => i.Englishword).WithMany(p=>p.uaword);
 
         }
 

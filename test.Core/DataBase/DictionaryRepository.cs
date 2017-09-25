@@ -51,7 +51,7 @@ namespace test.DataBase
 
         public IEnumerable<UAWord> GetAll()
         {
-            var res = db.Uaword.Include(p => p.englishword).ToList();
+            var res = db.Uaword.Include(p => p.Englishword).ToList();
             return res;
         }
 

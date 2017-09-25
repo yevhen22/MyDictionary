@@ -13,24 +13,9 @@
         <ToolbarItem Name="MenuItem1" Order="Primary" Text="Add New" Priority="0" Clicked="CreateWord" />
     </ContentPage.ToolbarItems>
 
-    
 
-    <StackLayout x:Name="mainstack">
-        <ListView x:Name="listData"
-              HasUnevenRows="True"
-              ItemsSource="{Binding list}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout>
-                                <Label Text="{Binding engword}" FontSize="18" />
-                                <Label Text="{Binding uaword}" />
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <StackLayout>
+        
     </StackLayout>
+
 </ContentPage>

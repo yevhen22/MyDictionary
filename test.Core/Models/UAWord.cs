@@ -19,11 +19,26 @@ namespace test.Models
     public class UAWord
     {
         [PrimaryKey, AutoIncrement, Column("id")]
-        public int id { get; set; }
-        public string uaword { get; set; }
-        public int englishWordId { get; set; }
-        public EnglishWord englishword { get; set; }
+        public int Id { get; set; }
+        public string Uaword { get; private set; }
+        public int EnglishWordId { get; set; }
+        public EnglishWord Englishword { get; private set; }
 
+
+        public void SetEngID(int id) {
+            EnglishWordId = id;
+        }
+
+        public void SetUaWord(string word)
+        {
+            Uaword = word;
+        }
+
+        public void SetConn(EnglishWord englishWord)
+        {
+            Englishword = englishWord;
+        }
+        
         /* private int id;
          private string uaword;
          private int englishWordId;
