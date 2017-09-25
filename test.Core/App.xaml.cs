@@ -11,8 +11,8 @@ namespace test
 {
     public partial class App : Application
     {
-        public const string DATABASE_NAME = "dictionary.db";
-        public static DictionaryRepository database;
+        public const string DATABASE_NAME = "dict";
+        /*public static DictionaryRepository database;
         public static DictionaryRepository Database
         {
             get
@@ -23,7 +23,8 @@ namespace test
                 }
                 return database;
             }
-        }
+        }*/
+
         public App()
         {
             InitializeComponent();

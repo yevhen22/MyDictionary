@@ -24,8 +24,8 @@ namespace test.DataBase
             modelBuilder.Entity<EnglishWord>().ToTable("englishword");
             modelBuilder.Entity<UAWord>().ToTable("uaword");
 
-            modelBuilder.Entity<EnglishWord>().ForSqliteToTable("englishword").HasKey(p => p.ID);
-            modelBuilder.Entity<UAWord>().ForSqliteToTable("uaword").HasKey(p => p.ID);
+            modelBuilder.Entity<EnglishWord>().HasKey(p => p.ID);
+            modelBuilder.Entity<UAWord>().HasKey(p => p.ID);
             
 
             modelBuilder.Entity<EnglishWord>().HasMany(p => p.uaword).WithOne(p => p.EnglishWord);
@@ -35,13 +35,14 @@ namespace test.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connbuilder = new SqliteConnectionStringBuilder
+            /*string connbuilder = new SqliteConnectionStringBuilder
             {
                 DataSource = databasepath
             }.ToString();
 
             var conn = new SqliteConnection(connbuilder);
-            optionsBuilder.UseSqlite(conn);
+            optionsBuilder.UseSqlite(conn);*/
+            optionsBuilder.UseSqlite($"Filename={databasepath}");
         }
     }
 }

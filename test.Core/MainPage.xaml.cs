@@ -6,28 +6,40 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using test.Views;
 using test.Models;
+using test.DataBase;
 
 namespace test
 {
     public partial class MainPage : ContentPage
     {
+        
         public MainPage()
         {
             InitializeComponent();
-            EnglishWord english = new EnglishWord();
-            english.EngWord = "hello";
-            english.DataTime = DateTime.Now;
-            english.ID = 1;
+            EnglishWord english = new EnglishWord
+            {
+                EngWord = "hello",
+                DataTime = DateTime.Now,
+                ID = 1
+            };
 
-            UAWord word = new UAWord();
-            word.UAword = "Привіт";
-            word.ID = 1;
+            UAWord word = new UAWord
+            {
+                UAword = "Привіт",
+                ID = 1
+            };
 
             english.AddUkrainianWord(word);
 
+            DictionaryRepository rep = new DictionaryRepository(App.DATABASE_NAME);
+            rep.SaveEngItem(ref english);
+            rep.SaveUaItem(word);
+            rep.SetUpConnection(english, word);
+            
+            /*
             App.Database.SaveEngItem(ref english);
             App.Database.SaveUaItem(word);
-            App.Database.SetUpConnection(english,word);
+            App.Database.SetUpConnection(english,word);*/
         }
         protected override void OnAppearing()
         {
