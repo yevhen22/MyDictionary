@@ -11,7 +11,7 @@ namespace test
 {
     public partial class App : Application
     {
-        public const string DATABASE_NAME = "dict.db";
+        public const string DATABASE_NAME = "dictionary.db";
         public static DictionaryRepository database;
         public static DictionaryRepository Database
         {
