@@ -7,8 +7,8 @@ using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Data.Sqlite;
-using System.ComponentModel.DataAnnotations.Schema;
 
+using SQLite;
 /*
     |--Class that contain Ukrainian words--|
     |--Joined with "EnglishWord" class [ManyToOne] by EnglishWord auto property--|
@@ -37,7 +37,7 @@ namespace test.Models
                 }
             }
         }
-        [Key]
+        [PrimaryKey, AutoIncrement, Column("id")]
         public int ID
         {
             get { return id; }
@@ -50,7 +50,6 @@ namespace test.Models
                 }
             }
         }
-
         
         public int EnglishID
         {

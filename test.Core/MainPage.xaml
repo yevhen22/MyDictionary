@@ -9,19 +9,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="listData" ItemsSource="{Binding}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding engword}" FontSize="Medium" />
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Label x:Name="textpro"/>
     </StackLayout>
     
 </ContentPage>

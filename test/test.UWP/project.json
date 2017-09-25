@@ -1,8 +1,11 @@
 ﻿{
   "dependencies": {
     "Microsoft.EntityFrameworkCore": "1.1.2",
+    "Microsoft.EntityFrameworkCore.Design": "1.1.2",
     "Microsoft.EntityFrameworkCore.Sqlite": "1.1.2",
+    "Microsoft.EntityFrameworkCore.Tools": "1.1.2",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
+    "sqlite-net-pcl": "1.1.2",
     "Xamarin.Forms": "2.3.5.256-pre6",
     "Xamarin.Forms.Maps": "2.3.5.253-pre5"
   },

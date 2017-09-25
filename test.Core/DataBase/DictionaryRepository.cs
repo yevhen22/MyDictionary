@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using test;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-
+using SQLite;
 /*
     Class which define all methods for work with database 
 */

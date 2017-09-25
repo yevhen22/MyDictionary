@@ -23,8 +23,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.2" />
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.1.2" />
     <PackageReference Include="Xamarin.Forms" Version="2.3.5.256-pre6" />
   </ItemGroup>
 

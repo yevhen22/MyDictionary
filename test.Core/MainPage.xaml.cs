@@ -31,15 +31,10 @@ namespace test
 
             english.AddUkrainianWord(word);
 
-            DictionaryRepository rep = new DictionaryRepository(App.DATABASE_NAME);
-            rep.SaveEngItem(ref english);
-            rep.SaveUaItem(word);
-            rep.SetUpConnection(english, word);
-            
-            /*
             App.Database.SaveEngItem(ref english);
             App.Database.SaveUaItem(word);
-            App.Database.SetUpConnection(english,word);*/
+            App.Database.SetUpConnection(english,word);
+
         }
         protected override void OnAppearing()
         {

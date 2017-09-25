@@ -10,7 +10,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Data.Sqlite;
+using SQLite;
 
 namespace test.Models
 {
@@ -29,7 +30,7 @@ namespace test.Models
         public EnglishWord() {
             uaword = new List<UAWord>();
         }
-        [Key]
+        [PrimaryKey,AutoIncrement,Column("id")]
         public int ID
         {
             get { return id; }
