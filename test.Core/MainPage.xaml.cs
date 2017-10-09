@@ -17,7 +17,7 @@ namespace test
         public MainPage()
         {
             InitializeComponent();
-             EnglishWord english = new EnglishWord();
+            /*EnglishWord english = new EnglishWord();
              english.SetengWord("book");
              english.SetDateTime(DateTime.Now);
 
@@ -29,20 +29,10 @@ namespace test
 
             english.AddUkrainianWord(word);
             english.AddUkrainianWord(word1);
-            /*EnglishWord english = new EnglishWord
-            {
-                Engword = "hello",
-                Currenttime = DateTime.Now,
-            };
-            UAWord word = new UAWord
-            {
-                Uaword = "Привіт",
-            };
-            english.AddUkrainianWord(word);*/
-
+            
             App.Database.SaveEngItem(ref english);
             App.Database.SaveUaItem(word);
-            App.Database.SetUpConnection(english, word);
+            App.Database.SetUpConnection(english, word);*/
         }
         
 

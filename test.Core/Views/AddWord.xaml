@@ -1,23 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="test.Views.AddWord">
-    
-    <!--<ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
-        </StackLayout>
-    </ContentPage.Content>-->
-    <StackLayout x:Name="main" Padding="5,20,5,10">
+             xmlns:ViewModel ="clr-namespace:test.ViewModel"
+             x:Class="test.Views.AddWord"
+             Title="Addition">
+
+   <StackLayout x:Name="main" Padding="5,20,5,10">
         <StackLayout x:Name="NewWord">
             <Label Text="Enter your English word" FontSize="Medium"/>
-            <Entry x:Name="engEntry"/>
+            <Entry x:Name="engEntry" Text="{Binding Englword,Mode=TwoWay}"/>
             <Label Text="Translation" FontSize="Medium"/>
-            <Entry x:Name="ukrword" Text="{}"/>
+            <Entry x:Name="ukrword" Text="{Binding Ukrword, Mode=TwoWay}"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Padding="20,15,15,10" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+
             <Button x:Name="btn"  Text="New translation"/>
-            <Button x:Name="Save"  Text="Save"/>
+            <Button x:Name="Save"  Text="Save"  Command="{Binding SaveData}"/>
         </StackLayout>
+        <StackLayout>
+            <Label Text="Data for save:"/>
+            <Label x:Name="engData" Text="{Binding Source={x:Reference Name=engEntry }, Path=Text}"/>
+            <Label Text="Translations"/>
+            <Label x:Name="ukrdata" Text="{Binding Source={x:Reference Name=ukrword  }, Path=Text}"/>
+            <ListView>
+                
+            </ListView>
+        </StackLayout> 
     </StackLayout>
 </ContentPage>
