@@ -16,6 +16,8 @@
 
             <Button x:Name="btn"  Text="New translation"/>
             <Button x:Name="Save"  Text="Save"  Command="{Binding SaveData}"/>
+
+            <ActivityIndicator IsRunning="{Binding isbusy}"/>
         </StackLayout>
         <StackLayout>
             <Label Text="Data for save:"/>

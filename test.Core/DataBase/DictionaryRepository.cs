@@ -8,8 +8,9 @@ using test;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SQLite;
+using System.Threading.Tasks;
 /*
-    Class which define all methods for work with database 
+Class which define all methods for work with database 
 */
 
 namespace test.DataBase

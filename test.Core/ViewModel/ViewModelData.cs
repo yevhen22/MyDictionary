@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using test.Models;
 using Xamarin.Forms;
@@ -11,6 +12,8 @@ namespace test.ViewModel
 {
     public class ViewModelData:INotifyPropertyChanged
     {
+        bool IsBusy = false;
+
         UAWord aWord;
         EnglishWord englishWord;
         ObservableCollection<UAWord> Collection { get; set; }
@@ -25,6 +28,15 @@ namespace test.ViewModel
             SaveData = new Command(Save);
             Collection = new ObservableCollection<UAWord>();
         }
+
+        /*public bool isbusy {
+            get { return IsBusy; }
+            set {
+                IsBusy = value;
+                OnPropertyChanged(nameof(isbusy));
+                //SaveData.ChangeCanExecute();
+            }
+        }*/
 
         public string Englword
         {
@@ -61,8 +73,10 @@ namespace test.ViewModel
             else {
                 Ukrword = "One of the entries are empty";
             }
+
             Ukrword = String.Empty;
             Englword = string.Empty;
+
         }
 
         public void NewWord()
