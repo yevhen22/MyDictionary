@@ -10,7 +10,20 @@
 
 
     <StackLayout>
-        
+        <ListView x:Name="dict" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Engword}" FontSize="Medium" />
+                                <Label Text="{Binding Uaword}" FontSize="Medium" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

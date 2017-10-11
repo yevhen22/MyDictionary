@@ -12,7 +12,7 @@ namespace test.ViewModel
 {
     public class ViewModelData:INotifyPropertyChanged
     {
-        bool IsBusy = false;
+        private bool IsBusy = false;
 
         UAWord aWord;
         EnglishWord englishWord;
@@ -29,14 +29,13 @@ namespace test.ViewModel
             Collection = new ObservableCollection<UAWord>();
         }
 
-        /*public bool isbusy {
+        public bool isbusy {
             get { return IsBusy; }
             set {
                 IsBusy = value;
                 OnPropertyChanged(nameof(isbusy));
-                //SaveData.ChangeCanExecute();
             }
-        }*/
+        }
 
         public string Englword
         {
@@ -69,6 +68,10 @@ namespace test.ViewModel
 
                 App.Database.SaveUaItem(aWord);
                 App.Database.SetUpConnection(englishWord, aWord);
+
+                isbusy = true;
+                Task.Delay(1000);
+                isbusy = false;
             }
             else {
                 Ukrword = "One of the entries are empty";

@@ -27,7 +27,7 @@ namespace test.DataBase
             var res = new List<EnglishWord>();
             if (db.Englishword != null)
             {
-                res = db.Englishword.ToList();
+                res = db.Englishword.Include(p=>p.uaword).ToList();
             }
             return res;
         }
@@ -35,17 +35,15 @@ namespace test.DataBase
         public ICollection<EnglishWord> GetEnglishList()
         {
             var res = new List<EnglishWord>();
-            if (db.Englishword != null)
-            {
                 res = db.Englishword.ToList();
-            }
             return res;
         }
 
 
         public IEnumerable<UAWord> UAWord()
         {
-            var res = db.Uaword.ToList();
+            var res = db.Uaword.Include(p => p.Englishword).ToList();
+
             return res;
         }
 
@@ -58,7 +56,7 @@ namespace test.DataBase
 
         public void SaveEngItem(ref EnglishWord word)
         {
-             db.Englishword.Add(word);
+            db.Englishword.Add(word);
         }
 
         public void SaveUaItem(UAWord word)
