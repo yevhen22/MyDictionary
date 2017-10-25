@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModel ="clr-namespace:test.ViewModel"
              x:Class="test.Views.AddWord"
-             Title="Addition">
+             Title="Addition"
+            >
 
    <StackLayout x:Name="main" Padding="5,20,5,10">
         <StackLayout x:Name="NewWord">
@@ -16,6 +17,7 @@
 
             <Button x:Name="btn"  Text="New translation"/>
             <Button x:Name="Save"  Text="Save"  Command="{Binding SaveData}"/>
+
 
             <ActivityIndicator IsRunning="{Binding isbusy}"/>
         </StackLayout>

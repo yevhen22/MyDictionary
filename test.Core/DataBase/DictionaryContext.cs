@@ -22,6 +22,7 @@ namespace test.DataBase
         {
             databasepath = path;
             Database.Migrate();
+           
         }
         public DbSet<EnglishWord> Englishword { get; set; }
         public DbSet<UAWord> Uaword { get; set; }

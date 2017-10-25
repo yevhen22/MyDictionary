@@ -9,15 +9,15 @@
     </ContentPage.ToolbarItems>
 
 
-    <StackLayout>
-        <ListView x:Name="dict" ItemsSource="{Binding}">
+    <StackLayout x:Name="maindata">
+        <ListView x:Name="dict" ItemsSource="{Binding dictdata}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding Engword}" FontSize="Medium" />
-                                <Label Text="{Binding Uaword}" FontSize="Medium" />
+                               <!--<Label Text="{Binding Uaword}" FontSize="Medium" />-->
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

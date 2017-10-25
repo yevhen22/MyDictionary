@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SQLite;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 /*
 Class which define all methods for work with database 
 */
@@ -18,24 +19,26 @@ namespace test.DataBase
     public class DictionaryRepository
     {
         DictionaryContext db;
+      
         public DictionaryRepository(string path) {
             string basepath = DependencyService.Get<ISQLite>().GetDataPath(path);
             db = new DictionaryContext(basepath);
         }
 
-        public IEnumerable<EnglishWord> GetEnglish() {
+        public ObservableCollection<EnglishWord> GetEnglish() {
             var res = new List<EnglishWord>();
             if (db.Englishword != null)
             {
-                res = db.Englishword.Include(p=>p.uaword).ToList();
+               res =  db.Englishword.Include(p=>p.uaword).ToList();
             }
-            return res;
+            var observer = new ObservableCollection<EnglishWord>(res);
+            return observer;
         }
 
-        public ICollection<EnglishWord> GetEnglishList()
+        public async Task<ICollection<EnglishWord>> GetEnglishList()
         {
             var res = new List<EnglishWord>();
-                res = db.Englishword.ToList();
+               res = await db.Englishword.ToListAsync();
             return res;
         }
 
@@ -67,6 +70,8 @@ namespace test.DataBase
         public void SetUpConnection(EnglishWord word,UAWord uAWord) {
             word.uaword.Add(uAWord);
             db.SaveChanges();
+            db.Database.CloseConnection();
+            
         }
     }
 }

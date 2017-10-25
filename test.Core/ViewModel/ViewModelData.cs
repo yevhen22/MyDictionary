@@ -14,6 +14,7 @@ namespace test.ViewModel
     {
         private bool IsBusy = false;
 
+
         UAWord aWord;
         EnglishWord englishWord;
         ObservableCollection<UAWord> Collection { get; set; }
@@ -79,7 +80,6 @@ namespace test.ViewModel
 
             Ukrword = String.Empty;
             Englword = string.Empty;
-
         }
 
         public void NewWord()

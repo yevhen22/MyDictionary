@@ -19,5 +19,7 @@ namespace test.Views
             InitializeComponent();
             BindingContext = new ViewModelData();
         }
+
+        
     }
 }
